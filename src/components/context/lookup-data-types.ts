@@ -1,5 +1,4 @@
 import {Column as TableColumn, IdType as TableIdType} from 'react-table';
-import {SelectValue} from 'antd/es/select';
 
 export type IdType<T> = TableIdType<T & Record<string, unknown>>
 export type Column<T> = TableColumn<T & Record<string, unknown>>;
@@ -16,5 +15,5 @@ export type Cursor = {
   type: string;
   rowIndex: number
 }
-export type ItemToLabelResult = { label?: string, value?: SelectValue };
+export type ItemToLabelResult = { lookupValue?: string, toggleSearchButtonLabel?: string };
 export type ItemToLabel<T> = (item: T) => ItemToLabelResult

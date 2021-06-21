@@ -1,7 +1,7 @@
-import {State} from '../../reducer/reducer';
+import {State} from '../context/reducer';
 import React, {useCallback, useEffect} from 'react';
-import {Action} from '../../reducer/action-types';
-import {ActionHandlers} from '../lookup-context-handlers-types';
+import {Action} from '../context/action-types';
+import {ActionHandlers} from '../context/lookup-context-handlers-types';
 import {
   createCommitCursorMovementAction,
   createDataSetColumnsAction,
@@ -10,13 +10,14 @@ import {
   createErrorAction,
   createKeyPressAction,
   createMoveCursorToAction,
-  createSearchAction, createSearchClearAction,
+  createSearchAction,
+  createSearchClearAction,
   createSelectAction,
   createToggleSearchAction
-} from '../../reducer/actions';
-import {getData} from '../../utils';
-import {Column, Cursor, Row} from '../../data/lookup-data-types';
-import {LookupContextApi} from '../lookup-context-setup';
+} from '../context/actions';
+import {getData} from '../context/utils';
+import {Column, Cursor, Row} from '../context/lookup-data-types';
+import {LookupContextApi} from '../context/lookup-context-setup';
 
 export function useHandlers<T>(
   {value, onClear, onSelect, onError, itemToLabel}: LookupContextApi<T>,
@@ -26,23 +27,7 @@ export function useHandlers<T>(
   useEffect(handleSelectValue, [dispatch, itemToLabel, value]);
   useEffect(handleErrorEffect, [state.error, onError]);
   useEffect(handleValueEffect, [onSelect, state]);
-  useEffect(handleClearEffect, [onClear, state]);
-
-  function handleClearEffect() {
-    const {
-      lookupValue,
-      searchValue,
-      error,
-      toggleSearchVisible,
-      cursor,
-      open,
-      selectionCursor,
-      toggleSearchButtonLabel
-    } = state;
-    if (!(lookupValue || searchValue || error || toggleSearchButtonLabel || toggleSearchVisible || cursor || open || selectionCursor)) {
-      onClear();
-    }
-  }
+  useEffect(handleClearEffect, [onClear, state.clear]);
 
   return {
     handleChange: useCallback(handleSearchClear, [dispatch]),
@@ -97,11 +82,13 @@ export function useHandlers<T>(
     !data && dispatch(createSearchClearAction());
   }
 
+  function handleClearEffect() {
+    state.clear && onClear && onClear();
+  }
+
   function handleValueEffect() {
     const data = getData(state);
-    if (data && onSelect) {
-      onSelect(data);
-    }
+    data && onSelect && onSelect(data);
   }
 
   function handleErrorEffect() {
@@ -111,6 +98,4 @@ export function useHandlers<T>(
   function handleSelectValue() {
     dispatch(createSelectAction(value && itemToLabel(value) || {}));
   }
-
-
 }

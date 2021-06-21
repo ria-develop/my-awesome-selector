@@ -1,8 +1,8 @@
 import React, {MouseEvent, useCallback} from 'react';
-import {useLookupContext} from '../lookup-config';
-import Table from './table';
+import {useLookupContext} from '../context/lookup-config';
+import Table from '../view/table';
 import './dropdown-table-render.css';
-import {getColIndexFromAriaColIndexAttribute, getRowIndexFromAriaRowIndexAttribute} from './utils';
+import {getColIndexFromAriaColIndexAttribute, getRowIndexFromAriaRowIndexAttribute} from '../view/utils';
 
 function DropdownTableRender(): JSX.Element {
   const {rows, columns, handleCommitCursorMovement, handleCursorMoveTo} = useLookupContext();

@@ -1,4 +1,4 @@
-import {Column, Cursor, Row} from '../data/lookup-data-types';
+import {Column, Cursor, Row} from './lookup-data-types';
 import {Action, ActionType} from './action-types';
 import {SelectValue} from 'antd/es/select';
 
@@ -7,6 +7,7 @@ export type ToggleSearchState = {
   toggleSearchButtonLabel?: string;
 }
 export type LookupState = {
+  clear: boolean;
   open: boolean;
   searchValue?: string;
   lookupValue?: SelectValue;
@@ -26,7 +27,8 @@ export type ErrorState = {
 
 export type State<T> = ToggleSearchState & LookupState & DropdownState<T> & ErrorState;
 
-export const getInitialState = <T>():State<T> => ({
+export const getInitialState = <T>(): State<T> => ({
+  clear: false,
   open: false,
   toggleSearchVisible: false,
   placeholder: 'Type something',
@@ -35,33 +37,33 @@ export const getInitialState = <T>():State<T> => ({
 });
 
 export function reducer<T>(state: State<T>, action: Action<T>): State<T> {
-  console.debug('Reducer', {state, action});
+  const newState = {...state, clear: false};
   switch (action.type) {
     case ActionType.SEARCH_TOGGLE:
-      return {...state, toggleSearchVisible: !state.toggleSearchVisible};
+      return {...newState, toggleSearchVisible: !state.toggleSearchVisible};
     case ActionType.SEARCH:
-      return {...state, open: !!action.searchValue, searchValue: action.searchValue};
+      return {...newState, open: !!action.searchValue, searchValue: action.searchValue};
     case ActionType.MOVE_CURSOR_TO:
-      return {...state, cursor: action.moveTo};
+      return {...newState, cursor: action.moveTo};
     case ActionType.COMMIT_CURSOR_MOVEMENT:
-      return {...state, selectionCursor: state.cursor};
+      return {...newState, selectionCursor: state.cursor};
     case ActionType.SELECT:
       return {
-        ...state,
+        ...newState,
         lookupValue: action.lookupValue,
         toggleSearchButtonLabel: action.toggleSearchButtonLabel,
         toggleSearchVisible: !!action.lookupValue,
         searchValue: undefined
       };
     case ActionType.SEARCH_CLEAR:
-      return {...getInitialState()};
+      return {...getInitialState(), clear: true};
     case ActionType.DROPDOWN_VISIBILITY_CHANGE:
-      return {...state, open: action.open};
+      return {...newState, open: action.open};
     case ActionType.DATA_SET_COLUMNS:
-      return {...state, columns: action.columns};
+      return {...newState, columns: action.columns};
     case ActionType.DATA_SET_ROWS:
-      return {...state, rows: action.rows};
+      return {...newState, rows: action.rows};
     default:
-      return state;
+      return newState;
   }
 }

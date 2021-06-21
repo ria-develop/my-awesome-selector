@@ -1,4 +1,4 @@
-import {Column, Cursor, LookupValueType, Row} from '../data/lookup-data-types';
+import {Column, Cursor, LookupValueType, Row} from './lookup-data-types';
 import {MouseEvent} from 'react';
 
 export type SelectHandler<T> = (value: LookupValueType<T>) => void

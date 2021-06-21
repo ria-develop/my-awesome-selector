@@ -1,5 +1,5 @@
 import {useContext} from 'react';
-import {ItemToLabel, LookupValueType} from '../data/lookup-data-types';
+import {ItemToLabel, LookupValueType} from './lookup-data-types';
 import {ClearHandler, ErrorHandler, SelectHandler} from './lookup-context-handlers-types';
 import {createLookupContext, createLookupContextProvider} from './lookup-context';
 import {LookupContextProvider, LookupContextType, ReactLookupContext} from './lookup-context-types';

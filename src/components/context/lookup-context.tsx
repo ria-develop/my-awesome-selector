@@ -1,7 +1,7 @@
 import React, {createContext, PropsWithChildren, Reducer, useReducer} from 'react';
-import {getInitialState, reducer, State} from '../reducer/reducer';
-import {Action} from '../reducer/action-types';
-import {useHandlers} from './hooks/use-handlers';
+import {getInitialState, reducer, State} from './reducer';
+import {Action} from './action-types';
+import {useHandlers} from '../hooks/use-handlers';
 import {LookupContextApi} from './lookup-context-setup';
 import {LookupContextProvider, LookupContextType, ReactLookupContext} from './lookup-context-types';
 

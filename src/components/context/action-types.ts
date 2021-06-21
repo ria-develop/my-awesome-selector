@@ -1,4 +1,4 @@
-import {Column, Cursor, Row} from '../data/lookup-data-types';
+import {Column, Cursor, Row} from './lookup-data-types';
 import {SelectValue} from 'antd/es/select';
 
 export enum ActionType {

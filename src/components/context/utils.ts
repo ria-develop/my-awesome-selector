@@ -1,5 +1,5 @@
-import {LookupValueType} from './data/lookup-data-types';
-import {State} from './reducer/reducer';
+import {LookupValueType} from './lookup-data-types';
+import {State} from './reducer';
 
 export const inRange = (x: number, min: number, max: number): boolean => ((x - min) * (x - max) <= 0);
 

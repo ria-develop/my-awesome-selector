@@ -1,4 +1,4 @@
-import {DropdownState, ErrorState, LookupState, ToggleSearchState} from '../reducer/reducer';
+import {DropdownState, ErrorState, LookupState, ToggleSearchState} from './reducer';
 import {SelectionHandlers, ErrorHandlers, LookupHandlers, ToggleSearchHandlers} from './lookup-context-handlers-types';
 import React, {Context} from 'react';
 import {LookupContextApi} from './lookup-context-setup';

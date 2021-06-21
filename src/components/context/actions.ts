@@ -1,4 +1,4 @@
-import {Column, Cursor, ItemToLabelResult, Row} from '../data/lookup-data-types';
+import {Column, Cursor, ItemToLabelResult, Row} from './lookup-data-types';
 import {
   ActionType,
   CommitCursorMovementAction,
@@ -13,10 +13,10 @@ import {
   SelectAction
 } from './action-types';
 
-export const createSelectAction = ({value, label}: ItemToLabelResult): SelectAction => ({
+export const createSelectAction = ({lookupValue, toggleSearchButtonLabel}: ItemToLabelResult): SelectAction => ({
   type: ActionType.SELECT,
-  lookupValue: value,
-  toggleSearchButtonLabel: label
+  lookupValue,
+  toggleSearchButtonLabel
 });
 
 export const createMoveCursorToAction = (moveTo: Cursor): MoveCursorToAction => ({

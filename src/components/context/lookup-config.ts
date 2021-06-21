@@ -1,4 +1,4 @@
-import {setupLookupContext} from './context/lookup-context-setup';
+import {setupLookupContext} from './lookup-context-setup';
 
 export type Selection = {
   clientName: string,
@@ -18,6 +18,7 @@ const {LookupContext, LookupContextProvider, useLookupContext} = setupLookupCont
   handleKeyPress: noop,
   handleSetColumns: noop,
   handleSetDataSource: noop,
+  clear: false,
   error: undefined,
   cursor: undefined,
   lookupValue: '',
