@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-key */
 import React from 'react';
-import scrollbarWidth from '../context/utils';
+import scrollbarWidth from '../utils';
 import {useTable, useBlockLayout} from 'react-table';
 import {FixedSizeList} from 'react-window';
 import './table.css';
 import {Column} from '../context/lookup-data-types';
 const ROW_HEIGHT =  35;
-function Table<T>({columns, data}: { columns: Column<T>[], data: any[] }): JSX.Element {
+function Table<T>({columns, data}: { columns: Column<T>[], data: (T & Record<string, unknown>)[] }): JSX.Element {
   const defaultColumn = React.useMemo(
     () => ({
       width: 150

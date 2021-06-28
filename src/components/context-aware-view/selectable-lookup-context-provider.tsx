@@ -1,11 +1,11 @@
-import {LookupContextProvider, Selection} from '../context/lookup-config';
+import {LookupContextProvider, Selection} from './selectable-lookup-config';
 import {LookupProps} from './search-lookup';
 import React, {PropsWithChildren} from 'react';
 import {LookupContextApi} from '../context/lookup-context-setup';
 
-type DataSelectorProps<T> = LookupContextApi<T> &  Omit<LookupProps, 'onSelect'>
+export type DataSelectorProps<T> = LookupContextApi<T> &  Omit<LookupProps, 'onSelect'>
 
-export function DataSelector({
+export function SelectableLookupContextProvider({
   value,
   onSelect,
   onClear,

@@ -1,5 +1,5 @@
 import React, {MouseEvent, useCallback} from 'react';
-import {useLookupContext} from '../context/lookup-config';
+import {useLookupContext} from './selectable-lookup-config';
 import Table from '../view/table';
 import './dropdown-table-render.css';
 import {getColIndexFromAriaColIndexAttribute, getRowIndexFromAriaRowIndexAttribute} from '../view/utils';

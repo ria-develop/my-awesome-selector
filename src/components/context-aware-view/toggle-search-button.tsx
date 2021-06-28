@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from 'antd';
-import {useLookupContext} from '../context/lookup-config';
+import {useLookupContext} from './selectable-lookup-config';
 import {ToggleSearchContext} from '../context/lookup-context-types';
 
 function ToggleSearchButton({toggleSearchVisible, handleToggleSearch, toggleSearchButtonLabel}: ToggleSearchContext) {

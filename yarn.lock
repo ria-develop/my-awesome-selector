@@ -3249,6 +3249,11 @@ commander@^7.0.0:
   resolved "https://registry.npmjs.org/commander/-/commander-7.2.0.tgz"
   integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
 
+common-logger@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/common-logger/-/common-logger-0.2.0.tgz#6774335cd9409b63a5ae794c2ffc5f655806c3a3"
+  integrity sha1-Z3QzXNlAm2OlrnlML/xfZVgGw6M=
+
 commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/commondir/-/commondir-1.0.1.tgz"

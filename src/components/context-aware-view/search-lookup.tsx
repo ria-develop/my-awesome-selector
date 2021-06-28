@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import {AutoComplete} from 'antd';
 import {AutoCompleteProps} from 'antd/es/auto-complete';
-import {useLookupContext} from '../context/lookup-config';
+import {useLookupContext} from './selectable-lookup-config';
 
 export type LookupProps = Omit<AutoCompleteProps, 'size' |
   'open' |
@@ -27,11 +27,11 @@ function SearchLookup({ ...props}: LookupProps): JSX.Element | null {
   useEffect(() => {
     handleSetColumns([{
       Header: 'Client Name',
-      accessor: 'data.clientName'
+      accessor: 'data.category'
     },
     {
       Header: 'Client Id',
-      accessor: 'data.clientId'
+      accessor: 'data.categoryId'
     }
     ]);
     handleSetDataSource([{

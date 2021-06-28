@@ -1,6 +1,9 @@
-import {Column, Cursor, Row} from './lookup-data-types';
-import {Action, ActionType} from './action-types';
+import {Column, Cursor, Row} from './context/lookup-data-types';
+import {Action, ActionType} from './context/action-types';
 import {SelectValue} from 'antd/es/select';
+//import logging from './utils/logging';
+
+//const debugLog = logging('reducer', 'debug');
 
 export type ToggleSearchState = {
   toggleSearchVisible: boolean;
@@ -11,7 +14,6 @@ export type LookupState = {
   open: boolean;
   searchValue?: string;
   lookupValue?: SelectValue;
-  placeholder: string;
 }
 
 export type DropdownState<T> = {
@@ -31,7 +33,6 @@ export const getInitialState = <T>(): State<T> => ({
   clear: false,
   open: false,
   toggleSearchVisible: false,
-  placeholder: 'Type something',
   columns: [],
   rows: []
 });
